@@ -1,4 +1,4 @@
-![tela de inicio (1)](https://github.com/Davi-Lv/NarTool_APP/assets/85120918/5cdcdf78-3d9f-43ec-a866-c3e8446d031d) <br>
+![tela de inicio (1)](https://github.com/Davi-Lv/NarTool/assets/85120918/4a39333b-e64f-49dc-81dc-02959d446daa) <br>
 
 ## Nartool - Uma Ferramenta para Narradores de RPG de Mesa
 
@@ -16,3 +16,5 @@ Este repositório contém o código-fonte do backend da aplicação, desenvolvid
 Contribuições são bem-vindas! Sinta-se à vontade para explorar, modificar e aprimorar o Nartool para melhorar ainda mais a experiência de narrativa nos jogos de RPG de mesa.
 
 <a href="https://instagram.com/nartoolai?igshid=NTc4MTIwNjQ2YQ==">Siga no Instagram</a>
+
+ ![Group 32](https://github.com/Davi-Lv/NarTool/assets/85120918/2e3213b5-2987-420b-8938-4c2d913679de)
