@@ -1,10 +1,10 @@
 import '../../App.css'
 import { Link } from 'react-router-dom'
 
-export default function Login() {
+export default function Historia_gerada() {
   return (
     <>
-      Login
+      Historia gerada
     </>
   )
 }
