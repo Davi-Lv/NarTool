@@ -2,7 +2,7 @@ import './App.css'
 import Menu from './Components/Menu'
 import { Link } from 'react-router-dom'
 
-function App() {
+export default function App() {
 
   return (
     <>
@@ -10,5 +10,3 @@ function App() {
     </>
   )
 }
-
-export default App
