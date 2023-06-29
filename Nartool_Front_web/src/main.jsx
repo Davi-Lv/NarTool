@@ -6,8 +6,6 @@ import './index.css'
 import Inicio from './Pages/Inicio/Inicio.jsx'
 import Historia_gerada from './Pages/Historia_gerada/Index.jsx'
 import Configuracoes from './Pages/Configuracoes/Configuracoes.jsx'
-import Sobre_projeto from './Pages/Configuracoes/Sobre_projeto/Sobre_projeto.jsx'
-import Sua_conta from './Pages/Configuracoes/Sua_conta/Sua_conta.jsx'
 import Tipo_preferido from './Pages/Tipo_Preferido/Tipo_preferido.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,8 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Inicio" element={<Inicio />} />
         <Route path="/HistoriaGerada" element={<Historia_gerada />} />
         <Route path="/Configuracoes" element={<Configuracoes />} />
-        <Route path="/Configuracoes/SobreProjeto" element={<Sobre_projeto />} />
-        <Route path="/Configuracoes/SuaConta" element={<Sua_conta />} />
         <Route path="/TipoPreferido" element={<Tipo_preferido />} />
       </Routes>
     </BrowserRouter>

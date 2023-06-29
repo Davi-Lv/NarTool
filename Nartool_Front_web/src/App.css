@@ -28,3 +28,68 @@
 .playgame:hover {
   filter: drop-shadow(0 0 2em #d78245);
 }
+
+.informacoes {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+ul {
+  list-style: none;
+}
+
+.subMenuInicio {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+  justify-content: center;
+}
+
+.deleteCamapanha img {
+  width: 25px;
+  height: 25px;
+}
+
+.deleteCamapanha {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.campanha {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+}
+.flexColumn {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.flexColumn h1 {
+  color: #474747;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  width: 22.8125rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.visualizarCampanha {
+  color: #696969;
+  font-size: 0.75rem;
+  font-style: normal;
+  line-height: normal;
+}
+.tituloSeuHistoricoDeCampanhas {
+  color: #6d6d6d;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  text-align: left;
+}

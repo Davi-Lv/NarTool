@@ -12,9 +12,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.subMenuConfiguracao button.selecionado {
+  background-color: #474747;
+  color: #FFFFFF;
+}
+
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #d78245;
   text-decoration: inherit;
 }
 a:hover {
@@ -44,10 +50,6 @@ button {
   background-color: #d78245;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
