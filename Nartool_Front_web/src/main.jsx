@@ -7,6 +7,7 @@ import Inicio from './Pages/Inicio/Inicio.jsx'
 import Historia_gerada from './Pages/Historia_gerada/Index.jsx'
 import Configuracoes from './Pages/Configuracoes/Configuracoes.jsx'
 import Tipo_preferido from './Pages/Tipo_Preferido/Tipo_preferido.jsx'
+import NovaHistoria from './Pages/Inicio/Nova_Historia/NovaHistoria.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,7 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/Inicio" element={<Inicio />} />
-        <Route path="/HistoriaGerada" element={<Historia_gerada />} />
+        <Route path="/Inicio/NovaHistoria" element={<NovaHistoria />} />        
+        <Route path="/Historia/:id" element={<Historia_gerada />} />
         <Route path="/Configuracoes" element={<Configuracoes />} />
         <Route path="/TipoPreferido" element={<Tipo_preferido />} />
       </Routes>
