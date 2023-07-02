@@ -6,7 +6,7 @@ import SuaConta from './Sua_conta/Sua_conta';
 import SobreProjeto from './Sobre_projeto/Sobre_projeto';
 
 export default function Configuracoes() {
-  const [exibirSuaConta, setExibirSuaConta] = useState(false);
+  const [exibirSuaConta, setExibirSuaConta] = useState(true);
   const [exibirSobreProjeto, setExibirSobreProjeto] = useState(false);
 
   const handleExibirSuaConta = () => {

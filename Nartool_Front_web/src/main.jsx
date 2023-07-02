@@ -8,6 +8,8 @@ import Historia_gerada from './Pages/Historia_gerada/Index.jsx'
 import Configuracoes from './Pages/Configuracoes/Configuracoes.jsx'
 import Tipo_preferido from './Pages/Tipo_Preferido/Tipo_preferido.jsx'
 import NovaHistoria from './Pages/Inicio/Nova_Historia/NovaHistoria.jsx'
+import CriarConta from './Pages/Criar_conta/Criar_conta.jsx'
+import Login from './Pages/Login/Login.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,6 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Historia/:id" element={<Historia_gerada />} />
         <Route path="/Configuracoes" element={<Configuracoes />} />
         <Route path="/TipoPreferido" element={<Tipo_preferido />} />
+        <Route path="/cadastro" element={<CriarConta />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

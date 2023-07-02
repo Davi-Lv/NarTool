@@ -1,7 +1,7 @@
-import '../../App.css'
-import { Link, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Menu from '../../Components/Menu/Menu'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Menu from '../../Components/Menu/Menu';
+import ArrowBack from '../../assets/arrowBack.svg';
 
 export default function HistoriaGerada() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export default function HistoriaGerada() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLoadingText(prevText => {
+      setLoadingText((prevText) => {
         if (prevText === 'Carregando...') {
           return 'Carregando';
         } else {
@@ -42,27 +42,34 @@ export default function HistoriaGerada() {
   return (
     <>
       <Menu />
-      {/* imagem gerada por IA */}
-      <img src="" alt="IaGen" />
-      <h2 className="titulo">{story.title}</h2>
-      <div className="TodasDescricoes">
-        <div className="premissa">
-          <h3>Premissa</h3>
-          <p className="descricaoPremissa">{story.premise}</p>
+      <h2 className="tituloHistoriaGen">
+        <button className="back" onClick={() => window.history.back()}>
+          <img src={ArrowBack} alt="icone voltar" />
+          Voltar
+        </button>
+        {story.title}
+      </h2>
+      <div className="historiaInfo">
+        <div className="Premissa">
+          <h4>Premissa</h4>
+          <p className="premiseHistoriaGen">{story.premise}</p>
         </div>
-        <div className="generoTema">
-          <h3>Genero/tema</h3>
-          <p className="descricaoGeneroTema">{story.genreAndTheme}</p>
+        <div className="GeneroTema">
+          <h4>Gênero/tema</h4>
+          <p className="generoETemaGen">{story.genreAndTheme}</p>
         </div>
-        <div className="regras">
-          <h3>Sistema de regras e mecânicas</h3>
-          <p className="descricaoRegras">{story.RulesAndMechanics}</p>
+        <div className="sistemaDeRegras">
+          <h4>Sistema de regras e mecânicas</h4>
+          <p className="regrasDaHistoria">{story.RulesAndMechanics}</p>
         </div>
         <div className="areaDeExploracao">
-          <h3>Area de exploração</h3>
-          <p className="descricaoAreaDeExploracao">{story.explorationArea}</p>
+          <h4>Área de exploração</h4>
+          <p className="areaDeExploracaoGen">{story.explorationArea}</p>
         </div>
+
+
+        
       </div>
     </>
-  )
+  );
 }

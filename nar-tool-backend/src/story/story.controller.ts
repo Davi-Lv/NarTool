@@ -16,6 +16,7 @@ export class StoryController {
     //     return this.storyService.createPronta(storyData);
     // }
 
+    
     @Post('CreateNewStory') // http://localhost:3000/CreateNewStory
     async PostCreateNewHistory(@Body() storyData: Partial<any>): Promise<Story> {
 

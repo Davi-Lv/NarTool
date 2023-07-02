@@ -6,9 +6,11 @@ import LogoCompleta from '../src/assets/LogoCompleta.svg'
 export default function App() {
 
   return (
+    <div className='centralizado'>
       <Link to="/Inicio" className="playgame">
         <img src={LogoCompleta} alt="Logo Nartool" />
         <button>Começar nova aventura</button>
       </Link>
+    </div>
   )
 }

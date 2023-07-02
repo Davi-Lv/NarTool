@@ -1,12 +1,12 @@
 import '../../../App.css'
+import LogoDM from '../../../assets/LogoDM.svg'
 import { Link } from 'react-router-dom'
 
 export default function Sobre_projeto() {
 
     return (
-        <>
-            <h1>Nartool - Ferramenta para Narradores de RPG de Mesa</h1>
-            <p>Desenvolvido por: <a href="">Davi M.</a></p>
+        <div className='sobreProjetoText'>
+            <h1>Nartool - Ferramenta para Narradores de RPG</h1>
             <p>
                 O Nartool é uma ferramenta em desenvolvimento para auxiliar
                 narradores de RPG de mesa, com uma abordagem inovadora, essa
@@ -22,7 +22,10 @@ export default function Sobre_projeto() {
                 criatividade dos narradores, o Nartool oferece excelentes
                 historias geradas e nunca vistas antes para seus jogos de RPG.
             </p>
-            <img src="" alt="marca Davi Mordonho" />
-        </>
+            <div className="desenvolvedor">
+                <img src={LogoDM} alt="marca Davi Mordonho" />
+                <p>Desenvolvido por: <a target='_blank' href="https://github.com/Davi-Lv">Davi M.</a></p>
+            </div>
+        </div>
     )
 }

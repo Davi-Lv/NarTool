@@ -39,28 +39,32 @@ export default function Inicio() {
             <div className="subMenuInicio">
                 <Link to="/Inicio/NovaHistoria" className="linkSubMenuInicio">Criar campanha aleatoria</Link>
                 <Link to="" className="linkSubMenuInicio">Crie campanhas do seu jeito</Link>
-                <Link to="" className="linkSubMenuInicioPremiun">Seja premiun</Link>
+                <Link to="/Configuracoes" className="linkSubMenuInicioPremiun">Seja premiun</Link>
             </div>
 
             <div className="historicoDeCampanhas">
                 <h1 className="tituloSeuHistoricoDeCampanhas">Seu historico de campanhas</h1>
                 <div className="campanhasCriadas">
-                    {stories.map(story => (
-                        <div className="campanha" key={story.id}>
-                            <Link to={`/Historia/${story.id}`} className="linkCampanha" >
-                                <div className='flexColumn'>
+                    {stories.length === 0 ? (
+                        <p className="nenhumaCampanha">Nenhuma campanha no momento</p>
+                    ) : (
+                        stories.map(story => (
+                            <div className="campanha" key={story.id}>
+                                <Link to={`/Historia/${story.id}`} className="linkCampanha" >
+
                                     <h1 className="tituloCampanha">{story.title}</h1>
                                     <p className="visualizarCampanha">Visualize essa campanha</p>
-                                </div>
-                            </Link>
-                            <button
-                                className="deleteCamapanha"
-                                onClick={() => handleDelete(story.id)}
-                            >
-                                <img src={IconDelete} alt='icone de deletar' />
-                            </button>
-                        </div>
-                    ))}
+
+                                </Link>
+                                <button
+                                    className="deleteCamapanha"
+                                    onClick={() => handleDelete(story.id)}
+                                >
+                                    <img src={IconDelete} alt='icone de deletar' />
+                                </button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </div>
         </div>

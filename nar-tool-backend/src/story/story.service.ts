@@ -41,22 +41,22 @@ export class StoryService {
   //}
 
   // reescrever uma história no banco de dados
-  async rewrite(id: number, storyData: Partial<Story>): Promise<Story> {
-    const story = await this.storyRepository.findOne({ where: { id } });
-    if (!story) {
-      throw new Error('História não encontrada');
-    }
-    const updatedStory = this.storyRepository.merge(story, storyData);
-    return this.storyRepository.save(updatedStory);
+  async rewrite(id: number, storyData: Partial<Story>): Promise < Story > {
+  const story = await this.storyRepository.findOne({ where: { id } });
+  if(!story) {
+    throw new Error('História não encontrada');
   }
+    const updatedStory = this.storyRepository.merge(story, storyData);
+  return this.storyRepository.save(updatedStory);
+}
 
   // deletar uma história no banco de dados
-  async delete(id: number): Promise<void> {
-    await this.storyRepository.delete(id);
-  }
+  async delete (id: number): Promise < void> {
+  await this.storyRepository.delete(id);
+}
 
   // deletar todas as histórias no banco de dados
-  async deleteAll(): Promise<void> {
-    await this.storyRepository.clear();
-  }
+  async deleteAll(): Promise < void> {
+  await this.storyRepository.clear();
+}
 }

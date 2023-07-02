@@ -6,7 +6,7 @@ export default function Menu() {
 
     return (
         <nav className="menu">
-            <img src={LogoCompleta} alt="logo" className="logo" />
+            <img src={LogoCompleta} alt="logo" className="logoMenu" />
             <ul className="menu-items">
                 <li>
                     <Link to="/Inicio">Campanhas</Link>
