@@ -8,8 +8,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
 
+}
 a {
   font-size: 1rem;
   font-weight: 600;
@@ -53,10 +53,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #d78245;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
+form button:hover {
+  background-color: #c26e3a;
+}
+
 .transitionHover:hover {
   transition: ease-in-out 0.25s;
 }

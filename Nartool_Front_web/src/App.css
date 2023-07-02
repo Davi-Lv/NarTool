@@ -2,9 +2,19 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+}
+.menu,
+.subMenuInicio,
+.historicoDeCampanhas,
+.subMenuConfiguracao,
+.suaConta,
+.planos,
+.historiaGerada,
+.sobreProjetoText,
+.tituloHistoriaGen,
+.historiaInfo {
   width: 42.1875rem;
 }
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,12 +28,10 @@
   display: flex;
   justify-content: space-between;
 }
-
 .subMenuConfiguracao button.selecionado {
   background-color: #474747;
   color: #ffffff;
 }
-
 .subMenuConfiguracao button {
   flex-basis: calc((100% - 1rem) / 2);
   padding: 0.625rem;
@@ -54,6 +62,9 @@
 .playgame:hover {
   filter: drop-shadow(0 0 2em #d78245);
 }
+.playgame button {
+  background-color: #d78245;
+}
 ul {
   list-style: none;
 }
@@ -76,11 +87,15 @@ ul {
   height: 25px;
   padding: 0;
 }
+.campanha:hover {
+  background: #dfdfdf;
+}
 .campanha {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0.5rem;
+  transition: 0.2s ease;
   background: #f1f1f1;
 }
 .linkCampanha {
@@ -177,6 +192,18 @@ ul {
   padding: 1.75rem 0 0.95rem 0;
   margin: 0;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.tituloSeuHistoricoDeCampanhas p {
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+.tituloSeuHistoricoDeCampanhas p:hover {
+  color: #d74545;
 }
 .linkCampanha h1 {
   color: #474747;
@@ -540,46 +567,98 @@ ul {
   display: flex;
   justify-content: space-between;
 }
-.cadastro {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.inicioScreen {
+  display: flex;
+  align-items: center;
+  width: 74.75rem;
+  height: 42.9375rem;
+  justify-content: space-around;
+  border-radius: 1.875rem;
+  background: #f1f1f1;
+  margin: 10% 0 0 0;
 }
-
-.cadastro h2 {
+.inicioScreen h2 {
+  color: #3e3e3e;
   text-align: center;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 }
-
-.cadastro form {
+.logoAndText {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 2.54rem;
+  text-align: left;
 }
-
-.cadastro label {
-  margin-bottom: 5px;
+.logoAndText p {
+  margin: 0;
+  color: #989898;
+  text-align: justify;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  max-width: 22.125rem;
 }
-
-.cadastro input {
-  padding: 5px;
-  margin-bottom: 10px;
+.logoAndText img {
+  height: 6.26806rem;
+  overflow: hidden;
 }
-
-.cadastro button {
-  padding: 10px 20px;
-  color: white;
+input {
+  display: flex;
+  width: 270px;
+  padding: 0.625rem 0.625rem 0.625rem 1.5625rem;
+  align-items: center;
+  border-radius: 0.375rem;
+  background: #fff;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  color: #606060;
+  height: 1.4rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  transition: background-color 0.3s;
+  line-height: normal;
 }
-
-.cadastro p {
-  text-align: center;
-  margin-top: 10px;
+input::placeholder {
+  color: #868686;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-
-.cadastro p a {
-  color: #e38744;
-  text-decoration: none;
+input:focus {
+  outline: 2px solid #e38744;
+  background: rgba(252, 194, 153, 0.22);
+  color: #b75814;
+  font-weight: 500;
+}
+input:hover {
+  outline: 2px solid #e38744;
+}
+input:focus::placeholder {
+  color: #b75814;
+}
+form {
+  display: flex;
+  gap: 1.38rem;
+  flex-direction: column;
+}
+form button {
+  background-color: #e38744;
+}
+.allForms h2,
+p {
+  margin: 0;
+}
+.allForms {
+  display: flex;
+  flex-direction: column;
+  gap: 1.38rem;
+}
+.errorEmailExist {
+  font-size: 0.7rem;
+  color: #e33737;
 }

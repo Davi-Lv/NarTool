@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Configuracoes" element={<Configuracoes />} />
         <Route path="/TipoPreferido" element={<Tipo_preferido />} />
         <Route path="/cadastro" element={<CriarConta />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

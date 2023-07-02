@@ -65,10 +65,7 @@ export default function HistoriaGerada() {
         <div className="areaDeExploracao">
           <h4>Área de exploração</h4>
           <p className="areaDeExploracaoGen">{story.explorationArea}</p>
-        </div>
-
-
-        
+        </div>        
       </div>
     </>
   );
