@@ -23,11 +23,15 @@ export default function NovaHistoria() {
         }
     };
 
+    const generateAgain = () => {
+        createNewStory();
+    };
+
     return (
         <div>
             <Menu />
             {isLoading ? (
-                <div className='centralizado' >
+                <div className='centralizado'>
                     <MoonLoader color="#E38744" loading={isLoading} size={50} />
                 </div>
             ) : story ? (
@@ -37,13 +41,11 @@ export default function NovaHistoria() {
                             <img src={ArrowBack} alt="icone voltar" />
                             Voltar
                         </button>
-                        <button className="back" onClick={() => window.history.back()}>
+                        <button className="back" onClick={generateAgain}>
                             Gerar novamente
                         </button>
                     </div>
-                    <h2 className='tituloHistoriaGen'>
-                        {story.title}
-                    </h2>
+                    <h2 className='tituloHistoriaGen'>{story.title}</h2>
                     <div className="historiaInfo">
                         <div className="Premissa">
                             <h4>Premissa </h4>

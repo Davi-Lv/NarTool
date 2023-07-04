@@ -32,7 +32,8 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        window.location.href = 'http://localhost:5173/Inicio/'
+        localStorage.setItem('email', email);
+        window.location.href = 'http://localhost:5173/Inicio/';
       } else {
         const mensagem = 'Email ou senha incorretos';
         return setMensagem(mensagem);

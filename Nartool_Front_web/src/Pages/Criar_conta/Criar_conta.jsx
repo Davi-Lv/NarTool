@@ -4,6 +4,7 @@ import Logo from '../../assets/logoCompleta.svg';
 import '../../App.css';
 
 export default function CriarConta() {
+  localStorage.getItem('email')
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');

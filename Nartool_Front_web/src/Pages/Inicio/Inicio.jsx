@@ -8,6 +8,14 @@ import { MoonLoader } from 'react-spinners';
 export default function Inicio() {
     const [stories, setStories] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [email, setEmail] = useState('');
+
+    useEffect(() => {
+        const storedEmail = localStorage.getItem('email');
+        if (storedEmail) {
+            setEmail(storedEmail);
+        }
+    }, []);
 
     const handleDelete = async (id) => {
         try {
@@ -20,17 +28,27 @@ export default function Inicio() {
         }
     };
 
+    const handleDeleteAll = async () => {
+        try {
+            await fetch('http://localhost:3000/DeleteAllStories', {
+                method: 'DELETE',
+            });
+            setStories([]);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:3000/listAllStories');
                 const data = await response.json();
 
-                // Simulando um atraso de 1 segundo antes de definir os dados
                 setTimeout(() => {
                     setStories(data);
                     setLoading(false);
-                }, 800);
+                }, 600);
             } catch (error) {
                 console.error(error);
             }
@@ -56,7 +74,9 @@ export default function Inicio() {
             </div>
 
             <div className="historicoDeCampanhas">
-                <h1 className="tituloSeuHistoricoDeCampanhas">Seu historico de campanhas <p>Deletar tudo</p></h1>
+                <h1 className="tituloSeuHistoricoDeCampanhas">
+                    Seu historico de campanhas <p onClick={handleDeleteAll}>Deletar tudo</p>
+                </h1>
                 <div className="campanhasCriadas">
                     {loading ? (
                         <div className="loadingContainer">

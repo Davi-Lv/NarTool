@@ -10,20 +10,22 @@ import Tipo_preferido from './Pages/Tipo_Preferido/Tipo_preferido.jsx'
 import NovaHistoria from './Pages/Inicio/Nova_Historia/NovaHistoria.jsx'
 import CriarConta from './Pages/Criar_conta/Criar_conta.jsx'
 import Login from './Pages/Login/Login.jsx'
+import PrivateRoute from './PrivateRoute.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/Inicio" element={<Inicio />} />
-        <Route path="/Inicio/NovaHistoria" element={<NovaHistoria />} />        
-        <Route path="/Historia/:id" element={<Historia_gerada />} />
-        <Route path="/Configuracoes" element={<Configuracoes />} />
-        <Route path="/TipoPreferido" element={<Tipo_preferido />} />
+        <Route path="/Inicio" element={<PrivateRoute><Inicio /></PrivateRoute>} />
+        <Route path="/Inicio/NovaHistoria" element={<PrivateRoute><NovaHistoria /></PrivateRoute>} />
+        <Route path="/Historia/:id" element={<PrivateRoute><Historia_gerada /></PrivateRoute>} />
+        <Route path="/Configuracoes" element={<PrivateRoute><Configuracoes /></PrivateRoute>} />
+        <Route path="/TipoPreferido" element={<PrivateRoute><Tipo_preferido /></PrivateRoute>} />
         <Route path="/cadastro" element={<CriarConta />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
+

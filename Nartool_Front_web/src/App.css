@@ -82,6 +82,7 @@ ul {
   border: none;
   cursor: pointer;
   margin: 25px;
+  border-radius: 100%;
 }
 .campanha button {
   height: 25px;
@@ -199,6 +200,7 @@ ul {
 .tituloSeuHistoricoDeCampanhas p {
   font-weight: 500;
   font-size: 0.8rem;
+  color: #741b1b;
   transition: 0.25s ease;
   cursor: pointer;
 }
@@ -246,6 +248,21 @@ ul {
   font-weight: 700;
   line-height: normal;
   margin: 2rem 0 0.45rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.suaConta h1 p {
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: 0.25s ease;
+  cursor: pointer;
+  color: #741b1b;
+  display: flex;
+  gap: 0.3rem;
+}
+.suaConta h1 p:hover {
+  color: #d74545;
 }
 .nomeInfo,
 .senhaInfo {
