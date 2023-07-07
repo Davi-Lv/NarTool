@@ -1,6 +1,7 @@
 import { Story } from './story.entity';
 import { StoryService } from './story.service';
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Req } from "@nestjs/common";
+import { Request } from 'express';
 
 @Controller()
 export class StoryController {
@@ -15,10 +16,9 @@ export class StoryController {
     // async PostCreateNewHistory(@Body() storyData: Partial<Story>): Promise<Story> {
     //     return this.storyService.createPronta(storyData);
     // }
-
     
     @Post('CreateNewStory') // http://localhost:3000/CreateNewStory
-    async PostCreateNewHistory(@Body() storyData: Partial<any>): Promise<Story> {
+    async PostCreateNewHistory(@Body() storyData: Partial<any>, @Req() req: Request): Promise<Story> {
 
         // Nartool-GPT-Model
         const generateText = (list: string[]) => {
@@ -32,13 +32,14 @@ export class StoryController {
         const explorationAreas = ['Corredores sombrios, quartos assustadores, porões misteriosos.', 'Mundos mágicos, terras desconhecidas, cavernas encantadas.', 'Praias isoladas, selvas perigosas, montanhas inexploradas.', 'Becos escuros, esconderijos secretos, arranha-céus imponentes.', 'Ilhas remotas, selvas exuberantes, cavernas submarinas.', 'Labirintos intricados, salas traiçoeiras, tesouros ocultos.', 'Cidades históricas, futuros distantes, eras passadas.', 'Recifes de coral, navios naufragados, abismos oceânicos.', 'Galerias de arte, estúdios de pintura, museus abandonados.', 'Cidades em ruínas, fábricas abandonadas, bases rebeldes.'];
         // Fim Nartool-GPT-Model
         // Invisível aos olhos porém pleno em sua missão o GPT opera com destreza - Nartool 2023
-
+        const userEmail = req.headers['email'] as string; 
         const newStory = new Story();
         newStory.title = generateText(titles);
         newStory.premise = generateText(premises);
         newStory.genreAndTheme = generateText(genresAndThemes);
         newStory.RulesAndMechanics = generateText(rulesAndMechanics);
         newStory.explorationArea = generateText(explorationAreas);
+        newStory.emailStory = userEmail;
 
         return this.storyService.createPronta(newStory);
     }

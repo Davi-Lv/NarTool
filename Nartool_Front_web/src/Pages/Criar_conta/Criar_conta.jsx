@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logoCompleta.svg';
 import '../../App.css';
@@ -9,6 +9,13 @@ export default function CriarConta() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('email');
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +52,8 @@ export default function CriarConta() {
       });
       if (response.ok) {
         console.log('conta registrada');
-        window.location.href = 'http://localhost:5173/Inicio/'
+        localStorage.setItem('email', email);
+        window.location.href = 'http://localhost:5173/PrimeiroAcesso'
       } else {
         console.log('Erro ao criar conta' + response.status);
       }
@@ -53,6 +61,7 @@ export default function CriarConta() {
       console.log('Erro ao registrar usuário:', error);
     }
   };
+
 
   return (
     <div className="inicioScreen">

@@ -11,6 +11,7 @@ import NovaHistoria from './Pages/Inicio/Nova_Historia/NovaHistoria.jsx'
 import CriarConta from './Pages/Criar_conta/Criar_conta.jsx'
 import Login from './Pages/Login/Login.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
+import BemVindo from './Pages/bemvindo/BemVindo.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Historia/:id" element={<PrivateRoute><Historia_gerada /></PrivateRoute>} />
         <Route path="/Configuracoes" element={<PrivateRoute><Configuracoes /></PrivateRoute>} />
         <Route path="/TipoPreferido" element={<PrivateRoute><Tipo_preferido /></PrivateRoute>} />
+        <Route path="/PrimeiroAcesso" element={<PrivateRoute><BemVindo/></PrivateRoute>} />
         <Route path="/cadastro" element={<CriarConta />} />
         <Route path="/Login" element={<Login />} />
       </Routes>

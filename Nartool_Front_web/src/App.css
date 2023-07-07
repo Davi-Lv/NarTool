@@ -679,3 +679,20 @@ p {
   font-size: 0.7rem;
   color: #e33737;
 }
+.primeiraVez {
+  height: 100vh !important;
+}
+.bemvindoITI{
+  background: #d78245;
+  padding: .6rem 5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.bemvindoITI:hover{
+  background: #f79a57;
+  color: #fff;
+}
+.bemvindo {
+  margin-bottom: 3rem;
+}

@@ -13,7 +13,13 @@ export default function NovaHistoria() {
         try {
             setIsLoading(true);
             await new Promise((resolve) => setTimeout(resolve, 2000));
-            const response = await axios.post('http://localhost:3000/CreateNewStory');
+            const email = localStorage.getItem('email');
+    
+            const response = await axios.post('http://localhost:3000/CreateNewStory', null, {
+                headers: {
+                    email: email,
+                },
+            });
             const data = response.data;
             setStory(data);
             setIsLoading(false);

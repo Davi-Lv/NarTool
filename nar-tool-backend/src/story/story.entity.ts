@@ -5,6 +5,9 @@ export class Story {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column()
+    emailStory: string;
+
     @Column({ length: 35})
     title: string;
 
