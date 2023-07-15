@@ -7,12 +7,21 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const [tentativas, setTentativas] = useState(0);
+  const [bloqueado, setBloqueado] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !senha) {
       const mensagem = 'Preencha todos os campos';
+      setMensagem(mensagem);
+      return;
+    }
+
+    if (bloqueado) {
+      const mensagem = 'Usuário bloqueado. Tente novamente mais tarde.';
       setMensagem(mensagem);
       return;
     }
@@ -36,7 +45,11 @@ export default function Login() {
         window.location.href = 'http://localhost:5173/Inicio/';
       } else {
         const mensagem = 'Email ou senha incorretos';
-        return setMensagem(mensagem);
+        setTentativas((prevTentativas) => prevTentativas + 1);
+        if (tentativas >= 2) {
+          setBloqueado(true);
+        }
+        setMensagem(mensagem);
       }
     } catch (error) {
       console.error('Erro ao autenticar usuário:', error);
@@ -84,7 +97,11 @@ export default function Login() {
           </div>
           <button type="submit">Entrar</button>
         </form>
-        {mensagem && <p className="errorEmailExist">{mensagem}</p>}
+        {bloqueado ? (
+          <p className="errorEmailExist">Usuário bloqueado. Tente novamente mais tarde.</p>
+        ) : (
+          mensagem && <p className="errorEmailExist">{mensagem}</p>
+        )}
         <p>
           Ainda não tem uma conta? <Link to="/cadastro" style={{ textDecoration: 'underline' }}>Cadastre-se</Link>
         </p>

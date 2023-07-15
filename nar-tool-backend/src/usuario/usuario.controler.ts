@@ -1,16 +1,10 @@
-import { Body, Controller, Delete, Get, Post, Put, Query } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Post, Query, Request } from "@nestjs/common";
 import { UsuarioService } from "./usuario.service";
 import { Usuario } from "./usuario.entity";
-import { resultadoDto } from "src/dto/resultado.dto";
 
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly UsuarioService: UsuarioService) { }
-
-  @Get('listar')
-  async findAll(): Promise<Usuario[]> {
-    return this.UsuarioService.findAll();
-  }
 
   @Post('cadastro')
   async cadastrar(@Body() usuario: Usuario): Promise<Usuario> {
@@ -19,7 +13,8 @@ export class UsuarioController {
 
   @Post('login')
   async login(@Body() credentials: { email: string; senha: string }): Promise<{ success: boolean }> {
-    const isValid = await this.UsuarioService.login(credentials.email, credentials.senha);
+    const { email, senha } = credentials;
+    const isValid = await this.UsuarioService.login(email, senha);
     return { success: isValid };
   }
 
@@ -28,4 +23,11 @@ export class UsuarioController {
     const exists = await this.UsuarioService.checkEmailExists(email);
     return { exists };
   }
+
+  @Get('nome')
+  async getNome(@Query('email') email: string): Promise<{ nome: string | null }> {
+    const nome = await this.UsuarioService.getNome(email);
+    return { nome };
+  }
+  
 }

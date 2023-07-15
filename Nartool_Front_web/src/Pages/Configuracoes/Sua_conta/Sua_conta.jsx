@@ -25,6 +25,7 @@ export default function Sua_conta() {
     fetchUserName();
   }, []);
 
+
   const [PlanoAtivado, setPlanoAtivado] = useState(false);
 
   const OnAndOff = () => {
@@ -83,7 +84,7 @@ export default function Sua_conta() {
           </div>
 
           <div className="Narplus">
-            <p className='preco'>{PlanoAtivado ? 'Seu plano atual' : '29,90/mês'}</p>
+            <p className='preco'>{PlanoAtivado ? 'Seu plano atual' : '9,90/mês'}</p>
             <h2>NarPlus <img src={Brilho} alt="icone brilho" /></h2>
             <div className="funcionamentoPlus">
               <p>Mais detalhes</p>

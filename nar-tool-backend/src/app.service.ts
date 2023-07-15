@@ -4,8 +4,8 @@ export class AppService {
     getHello(): any {
         let objeto = {
             hello: "Hello, world!",
-            nome: "davi",
-            idade: 22
+            nome: "teste",
+            idade: 100
         }
         return objeto;
     }

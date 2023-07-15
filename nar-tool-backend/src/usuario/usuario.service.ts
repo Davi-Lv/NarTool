@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Usuario } from './usuario.entity';
-import { resultadoDto } from 'src/dto/resultado.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuarioService {
@@ -10,37 +10,30 @@ export class UsuarioService {
     private usuarioRepository: Repository<Usuario>,
   ) { }
 
-  async findAll(): Promise<Usuario[]> {
-    return this.usuarioRepository.find();
-  }
-
   async cadastrar(usuario: Usuario): Promise<Usuario> {
+    const hashedPassword = await bcrypt.hash(usuario.senha, 8);
+    usuario.senha = hashedPassword;
     return this.usuarioRepository.save(usuario);
   }
 
   async checkEmailExists(email: string): Promise<boolean> {
-    const user = await this.usuarioRepository.findOne({ where: { email } });
-    return !!user;
+    const usuario = await this.usuarioRepository.findOne({ where: { email } });
+    return !!usuario;
   }
 
-  async login(email: string, senha: string): Promise<any> {
-    const user = await this.usuarioRepository.findOne({ where: { email } });
+  async login(email: string, senha: string): Promise<boolean> {
+    const usuario = await this.usuarioRepository.findOne({ where: { email } });
 
-    if (!user) {
+    if (!usuario) {
       return false;
     }
 
-    if (user.senha === senha) {
-      return true /*{ id: user.id, nome: user.name, email: user.email}*/;
-    } else {
-      return false;
-    }
+    const isMatch = await bcrypt.compare(senha, usuario.senha);
+    return isMatch;
   }
 
-  async teste(email: string): Promise<any> {
-    const user = await this.usuarioRepository.findOne({ where: { email } });
-      return {id: user.id, nome: user.name, email: user.email};
-    
+  async getNome(email: string): Promise<string | null> {
+    const usuario = await this.usuarioRepository.findOne({ where: { email } });
+    return usuario ? usuario.name : null;
   }
-
 }

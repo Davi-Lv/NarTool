@@ -4,7 +4,6 @@ import Logo from '../../assets/logoCompleta.svg';
 import '../../App.css';
 
 export default function CriarConta() {
-  localStorage.getItem('email')
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -33,7 +32,6 @@ export default function CriarConta() {
     }
 
     try {
-      // verifica o e-mail se já existe
       const checkEmailResponse = await fetch(`http://localhost:3000/usuario/check-email?email=${email}`);
       const { exists } = await checkEmailResponse.json();
       if (exists) {
@@ -42,7 +40,6 @@ export default function CriarConta() {
         return;
       }
 
-      // cadastra o usuário
       const response = await fetch('http://localhost:3000/usuario/cadastro', {
         method: 'POST',
         headers: {
@@ -53,6 +50,7 @@ export default function CriarConta() {
       if (response.ok) {
         console.log('conta registrada');
         localStorage.setItem('email', email);
+        localStorage.setItem('nome', name);
         window.location.href = 'http://localhost:5173/PrimeiroAcesso'
       } else {
         console.log('Erro ao criar conta' + response.status);
@@ -61,7 +59,6 @@ export default function CriarConta() {
       console.log('Erro ao registrar usuário:', error);
     }
   };
-
 
   return (
     <div className="inicioScreen">

@@ -33,8 +33,6 @@ export default function Inicio() {
       try {
         const response = await fetch('http://localhost:3000/listAllStories');
         const data = await response.json();
-
-        // Simulando um atraso de 1 segundo antes de definir os dados
         setTimeout(() => {
           setStories(data);
           setLoading(false);
