@@ -8,16 +8,34 @@ import { MoonLoader } from 'react-spinners';
 export default function Inicio() {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState('');
+  const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
-    const storedEmail = localStorage.getItem('email');
-    if (storedEmail) {
-      setEmail(storedEmail);
-    }
+    const fetchData = async () => {
+      try {
+        const storedEmail = localStorage.getItem('email');
+        if (storedEmail) {
+          setUserEmail(storedEmail);
+        }
+
+        const response = await fetch('http://localhost:3000/listUserStories', {
+          headers: {
+            'email': storedEmail,
+          },
+        });
+        const data = await response.json();
+
+        setStories(data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const StoryDelete = async (id) => {
     try {
       await fetch(`http://localhost:3000/DeleteHistory/${id}`, {
         method: 'DELETE',
@@ -28,25 +46,20 @@ export default function Inicio() {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/listAllStories');
-        const data = await response.json();
-        setTimeout(() => {
-          setStories(data);
-          setLoading(false);
-        }, 800);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const userEmail = localStorage.getItem('email');
-  const filteredStories = stories.filter((story) => story.emailStory === userEmail);
+  const DeleteAllStorys = async () => {
+    try {
+      await fetch('http://localhost:3000/DeleteAllUserStories', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'email': userEmail,
+        },
+      });
+      setStories([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -56,9 +69,9 @@ export default function Inicio() {
         <Link to="/Inicio/NovaHistoria" className="linkSubMenuInicio">
           Criar campanha aleatória
         </Link>
-        <Link to="" className="linkSubMenuInicio">
+        {/*<Link to="" className="linkSubMenuInicio">
           Crie campanhas do seu jeito
-        </Link>
+        </Link>*/}
         <Link to="/Configuracoes" className="linkSubMenuInicioPremiun">
           Seja premium
         </Link>
@@ -66,7 +79,7 @@ export default function Inicio() {
 
       <div className="historicoDeCampanhas">
         <h1 className="tituloSeuHistoricoDeCampanhas">
-          Seu histórico de campanhas <p>Deletar tudo</p>
+          Seu histórico de campanhas <p onClick={DeleteAllStorys}>Deletar tudo</p>
         </h1>
         <div className="campanhasCriadas">
           {loading ? (
@@ -74,16 +87,16 @@ export default function Inicio() {
               <MoonLoader color="#ffffff" loading={loading} size={30} />
               <p>Carregando...</p>
             </div>
-          ) : filteredStories.length === 0 ? (
+          ) : stories.length === 0 ? (
             <p className="nenhumaCampanha">Nenhuma campanha no momento</p>
           ) : (
-            filteredStories.map((story) => (
+            stories.map((story) => (
               <div className="campanha" key={story.id}>
                 <Link to={`/Historia/${story.id}`} className="linkCampanha">
                   <h1 className="tituloCampanha">{story.title}</h1>
                   <p className="visualizarCampanha">Visualize essa campanha</p>
                 </Link>
-                <button className="deleteCamapanha" onClick={() => handleDelete(story.id)}>
+                <button className="deleteCamapanha" onClick={() => StoryDelete(story.id)}>
                   <img src={IconDelete} alt="icone de deletar" />
                 </button>
               </div>

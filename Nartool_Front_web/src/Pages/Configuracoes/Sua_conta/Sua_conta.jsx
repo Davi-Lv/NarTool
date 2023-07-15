@@ -25,7 +25,6 @@ export default function Sua_conta() {
     fetchUserName();
   }, []);
 
-
   const [PlanoAtivado, setPlanoAtivado] = useState(false);
 
   const OnAndOff = () => {
@@ -33,9 +32,8 @@ export default function Sua_conta() {
   };
 
   const handleLogout = () => {
-    window.location.href = '/Login';
     localStorage.removeItem('email');
-    setEmail('');
+    window.location.href = '/Login';
   };
 
   return (

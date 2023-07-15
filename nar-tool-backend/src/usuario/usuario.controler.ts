@@ -29,5 +29,4 @@ export class UsuarioController {
     const nome = await this.UsuarioService.getNome(email);
     return { nome };
   }
-  
 }
